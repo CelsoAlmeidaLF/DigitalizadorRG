@@ -9,7 +9,7 @@
     <ApplicationIcon>identidade.ico</ApplicationIcon>
   </PropertyGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <Content Include="identidade.ico" />
   </ItemGroup>
 

@@ -39,17 +39,6 @@ namespace DigitalizadorRG
 
             try
             {
-                int i = 0;
-                foreach (string name in DictionaryDropImage.Keys)
-                {
-                    images.Add(name, CarregarDrop(i++, _map, DictionaryDropImage[name]));
-                }
-
-                
-                //images.Add("RG", CarregarDrop(_map, DictionaryDropImage["RG"]));
-                //images.Add("CPF", CarregarDrop(_map, DictionaryDropImage["CPF"]));
-                //images.Add("DTNASC", CarregarDrop(_map, DictionaryDropImage["DTNASC"]));
-
                 return CarragarDataGrid(images);
             }
             catch (Exception ex)
@@ -90,6 +79,8 @@ namespace DigitalizadorRG
             string[] str = new string[imgs.Count];
 #if DEBUG && false
             var ocr = new IronTesseract();
+            string[] str = new string[imgs.Count];
+
             foreach (Image img in imgs.Values)
                 using (var imput = new OcrInput(img))
                 {
@@ -119,7 +110,6 @@ namespace DigitalizadorRG
         }
 
         [SupportedOSPlatform("windows")]
-        private Image CarregarDrop(int index, Image img, Rectangle drop)
         {
             string path = @$"C:/Temp/Process/img-{index}.jpg";
             Bitmap target = new Bitmap(drop.Width, drop.Height);
@@ -133,5 +123,6 @@ namespace DigitalizadorRG
             target.Save(path);
             return target;
         }
+
     }
 }
